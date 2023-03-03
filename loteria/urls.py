@@ -20,8 +20,11 @@ from rest_framework import routers
 from loteria.app import views
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
+# router.register(r'concurso', views.ConcursoViewSet)
+router.register(r'aluno', views.AlunoViewSet)
+router.register(r'categoria', views.CategoriaViewSet)
+router.register(r'curso', views.CursoViewSet)
+router.register(r'aluno_curso', views.AlunoCursoViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

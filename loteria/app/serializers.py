@@ -1,22 +1,37 @@
-from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 
-from loteria.app.models import MegaSena
+from loteria.app.models import Concurso, Aluno, Categoria, AlunoCurso, Curso
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class ConcursoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'groups']
+        model = Concurso
+        fields = '__all__'
 
 
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
+class AlunoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Group
-        fields = ['url', 'name']
+        model = Aluno
+        fields = '__all__'
 
 
-class MyModelSerializer(serializers.ModelSerializer):
+class CategoriaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = MegaSena
+        model = Categoria
+        fields = '__all__'
+
+
+class AlunoCursoSerializer(serializers.ModelSerializer):
+    aluno = serializers.CharField(source='aluno.nome')
+    curso = serializers.CharField(source='curso.nome')
+    class Meta:
+        model = AlunoCurso
+        fields = '__all__'
+
+
+class CursoSerializer(serializers.ModelSerializer):
+    categoria = serializers.CharField(source='categoria.nome')
+
+    class Meta:
+        model = Curso
         fields = '__all__'
