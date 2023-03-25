@@ -35,5 +35,4 @@ class AlunoModelTestCase(TestCase):
     def test_deletar_lote(self):
         self.alunos_soares = Aluno.objects.filter(sobrenome='Soares')
         self.alunos_soares.delete()
-
         self.assertEqual(len(Aluno.objects.all()), 1)
