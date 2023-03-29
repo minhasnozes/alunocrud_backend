@@ -1,8 +1,7 @@
 .idea/
 __pycache__/
 db.sqlite3
-env/
+venv/
 *.log
 .coverage
 .pytest_cache/
-vend/
